@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-
-
+using System.Text.Json.Serialization;
 
 namespace NewAppTrivia.Models;
 
@@ -15,6 +14,7 @@ public partial class Player
 
     [Column("playerMail")]
     [StringLength(250)]
+    [JsonPropertyName("playerEmail")]
     public string PlayerMail { get; set; } = null!;
 
     [Column("name")]
@@ -23,12 +23,15 @@ public partial class Player
 
     [Column("password")]
     [StringLength(250)]
+    [JsonPropertyName("playerPassword")]
     public string Password { get; set; } = null!;
 
     [Column("levelCode")]
+        [JsonPropertyName("playerRank")]
     public int LevelCode { get; set; }
 
     [Column("points")]
+    [JsonPropertyName("playerScore")]
     public int Points { get; set; }
 
     [ForeignKey("LevelCode")]
